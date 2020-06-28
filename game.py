@@ -2,6 +2,7 @@ import pygame
 import sys
 import random
 from vars import *
+from snake import *
 
 
 class Game():
@@ -11,7 +12,7 @@ class Game():
         pygame.display.set_caption("snake")
         self.grid = [[0 for n in range(30)] for i in range(30)]
         self.cell_size = 20
-
+        self.snake = Snake(5, 1, self.cell_size, self.cell_size)
 
     def run(self):
         while(True):
@@ -29,9 +30,10 @@ class Game():
         pass
 
     def draw(self):
-        self.window.fill(WHITE)
+        self.window.fill(GREY)
 
         self.draw_grid(self.window)
+        self.snake.draw_snake(self.window)
 
         pygame.display.flip()
 
@@ -41,7 +43,7 @@ class Game():
         x,y = 0, 0
         for row in self.grid:
             for col in self.grid:
-                pygame.draw.rect(window, GREY, [x, y, self.cell_size, self.cell_size], 1)
+                pygame.draw.rect(window, BLACK, [x, y, self.cell_size, self.cell_size], 1)
                 x += self.cell_size
             x = 0
             y += self.cell_size
