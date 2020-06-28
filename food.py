@@ -5,7 +5,6 @@ class Food():
     def __init__(self, snake_body):
         self.width = cell_size
         self.height = cell_size
-
         self.food_body = pygame.Surface((self.width, self.height))
         self.food_rect = self.food_body.get_rect()
 
