@@ -13,7 +13,6 @@ class Snake():
         self.body = [self.pos]
         self.eatt = 0
         self.score = 0
-        
         self.dir = [1,0]
 
     def update(self, food_pos):
