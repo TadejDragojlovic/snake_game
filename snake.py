@@ -11,6 +11,7 @@ class Snake():
         self.rect.topleft = self.pos
         self.length = 1
         self.eatt = 0
+        self.score = 0
 
         self.dir = [1,0]
 
@@ -18,10 +19,8 @@ class Snake():
         self.pos[0] += self.dir[0]*20
         self.pos[1] += self.dir[1]*20
         if self.pos[0] > 600 or self.pos[0] < 0:
-            print("DEAD")
             sys.exit()
         if self.pos[1] > 600 or self.pos[1] < 0:
-            print("DEAD")
             sys.exit()
 
         if self.pos == food_pos:
@@ -33,5 +32,6 @@ class Snake():
 
     def eat(self):
         self.length += 1
+        self.score += 1
         self.eatt = 1
         return self.eatt
