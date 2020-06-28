@@ -1,7 +1,5 @@
 import pygame, sys
 from vars import *
-from food import *
-from game import *
 
 class Snake():
     def __init__(self, x, y, width, height):
