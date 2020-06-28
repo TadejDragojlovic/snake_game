@@ -3,6 +3,7 @@ import sys
 import random
 from vars import *
 from snake import *
+from food import *
 
 
 class Game():
@@ -10,9 +11,13 @@ class Game():
         pygame.init()
         self.window = pygame.display.set_mode((WIDTH, HEIGHT))
         pygame.display.set_caption("snake")
+        self.clock = pygame.time.Clock()
         self.grid = [[0 for n in range(30)] for i in range(30)]
         self.cell_size = 20
-        self.snake = Snake(5, 1, self.cell_size, self.cell_size)
+        self.snake_pos = [2, 2]
+        self.snake = Snake(self.snake_pos[0], self.snake_pos[1], self.cell_size, self.cell_size)
+
+        self.food = Food()
 
     def run(self):
         while(True):
@@ -26,13 +31,25 @@ class Game():
                 pygame.quit()
                 sys.exit()
 
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RIGHT:
+                    self.snake.dir = [1, 0]
+                if event.key == pygame.K_LEFT:
+                    self.snake.dir = [-1, 0]
+                if event.key == pygame.K_UP:
+                    self.snake.dir = [0, -1]
+                if event.key == pygame.K_DOWN:
+                    self.snake.dir = [0, 1]
+
     def update(self):
-        pass
+        self.snake.update()
+        self.clock.tick(10)
 
     def draw(self):
         self.window.fill(GREY)
 
         self.draw_grid(self.window)
+        self.food.draw_food(self.window)
         self.snake.draw_snake(self.window)
 
         pygame.display.flip()
