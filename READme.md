@@ -1,4 +1,4 @@
-## **Snake** game using pygame
+# **Snake** game using pygame
 
 Simple old school looking snake game made with Pygame.
 
