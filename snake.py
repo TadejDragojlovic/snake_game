@@ -19,9 +19,9 @@ class Snake():
     def update(self, food_pos):
         self.pos[0] += self.dir[0]*cell_size
         self.pos[1] += self.dir[1]*cell_size
-        if self.pos[0] > 600 or self.pos[0] < 0:
+        if self.pos[0] > 599 or self.pos[0] < 0:
             self.die()
-        if self.pos[1] > 600 or self.pos[1] < 0:
+        if self.pos[1] > 599 or self.pos[1] < 0:
             self.die()
 
         if self.pos == food_pos:

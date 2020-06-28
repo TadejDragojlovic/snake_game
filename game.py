@@ -15,8 +15,8 @@ class Game():
         self.grid = [[0 for n in range(20)] for i in range(20)]
         self.cell_size = cell_size
         self.snake = Snake(2, 2)
-
         self.food = Food(self.snake.body)
+        self.font = pygame.font.SysFont('arial', 48, True, False)
 
     def run(self):
         while(True):
@@ -58,6 +58,7 @@ class Game():
         self.draw_grid(self.window)
         self.food.draw_food(self.window)
         self.snake.draw_snake(self.window)
+        self.draw_score(self.window)
 
         pygame.display.flip()
 
@@ -71,3 +72,7 @@ class Game():
                 x += self.cell_size
             x = 0
             y += self.cell_size
+
+    def draw_score(self, window):
+        text = self.font.render(str(self.snake.score), False, BLACK)
+        window.blit(text, (530, 10))

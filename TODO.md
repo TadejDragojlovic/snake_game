@@ -1,8 +1,11 @@
 - [x] Add so the snake cannot go backwards
 - [x] When food is eaten, snake grows by one cell size
 - [x] When snake hits its tail, it dies
-- [ ] Add score
+- [x] Add score
 
+# Bugs
+- If the snake is going left (does this for every direction), if right and up are pressed at the same time, the snake will go backwards.
+- Very rarely if the snake goes off map, it doesn't die.
 
 ### Maybe
 - [ ] Add start menu
