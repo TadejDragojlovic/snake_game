@@ -14,10 +14,9 @@ class Game():
         self.clock = pygame.time.Clock()
         self.grid = [[0 for n in range(30)] for i in range(30)]
         self.cell_size = 20
-        self.snake_pos = [2, 2]
-        self.snake = Snake(self.snake_pos[0], self.snake_pos[1], self.cell_size, self.cell_size)
+        self.snake = Snake(2, 2, self.cell_size, self.cell_size)
 
-        self.food = Food()
+        self.food = Food(self.snake.pos[0], self.snake.pos[1])
 
     def run(self):
         while(True):
