@@ -12,11 +12,11 @@ class Game():
         self.window = pygame.display.set_mode((WIDTH, HEIGHT))
         pygame.display.set_caption("snake")
         self.clock = pygame.time.Clock()
-        self.grid = [[0 for n in range(30)] for i in range(30)]
-        self.cell_size = 20
-        self.snake = Snake(2, 2, self.cell_size, self.cell_size)
+        self.grid = [[0 for n in range(20)] for i in range(20)]
+        self.cell_size = cell_size
+        self.snake = Snake(2, 2)
 
-        self.food = Food(self.snake.pos[0], self.snake.pos[1])
+        self.food = Food(self.snake.body)
 
     def run(self):
         while(True):
@@ -31,6 +31,10 @@ class Game():
                 sys.exit()
 
             if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    pygame.quit()
+                    sys.exit()
+
                 if event.key == pygame.K_RIGHT and self.snake.dir != [-1, 0]:
                     self.snake.dir = [1, 0]
                 if event.key == pygame.K_LEFT and self.snake.dir != [1, 0]:
@@ -43,13 +47,13 @@ class Game():
     def update(self):
         self.snake.update(self.food.pos)
         if self.snake.eatt:
-            self.food = Food(self.snake.pos[0], self.snake.pos[1])
+            self.food = Food(self.snake.body)
             self.snake.eatt = 0
 
         self.clock.tick(10)
 
     def draw(self):
-        self.window.fill(GREY)
+        self.window.fill(WHITE)
 
         self.draw_grid(self.window)
         self.food.draw_food(self.window)
@@ -63,7 +67,7 @@ class Game():
         x,y = 0, 0
         for row in self.grid:
             for col in self.grid:
-                pygame.draw.rect(window, BLACK, [x, y, self.cell_size, self.cell_size], 1)
+                pygame.draw.rect(window, WHITE, [x, y, self.cell_size, self.cell_size])
                 x += self.cell_size
             x = 0
             y += self.cell_size
