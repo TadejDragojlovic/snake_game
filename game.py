@@ -41,7 +41,11 @@ class Game():
                     self.snake.dir = [0, 1]
 
     def update(self):
-        self.snake.update()
+        self.snake.update(self.food.pos)
+        if self.snake.eatt:
+            self.food = Food(self.snake.pos[0], self.snake.pos[1])
+            self.snake.eatt = 0
+
         self.clock.tick(10)
 
     def draw(self):
