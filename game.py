@@ -16,7 +16,6 @@ class Game():
         self.cell_size = cell_size
         self.snake = Snake(2, 2)
         self.food = Food(self.snake.body)
-        
         self.font = pygame.font.SysFont('arial', 48, True, False)
 
     def run(self):
