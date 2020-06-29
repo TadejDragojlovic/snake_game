@@ -55,4 +55,5 @@ class Snake():
         return False
 
     def die(self):
+        print(self.score)
         sys.exit()
