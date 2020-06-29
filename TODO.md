@@ -5,8 +5,8 @@
 - [ ] ADD COMMENTS
 
 # Bugs
-- If the snake is going left (does this for every direction), if right and up are pressed at the same time, the snake will go backwards.
-- Very rarely if the snake goes off map, it doesn't die.
+- [x] If the snake is going left (does this for every direction), if right and up are pressed at the same time, the snake will go backwards.
+- [x] Food can spawn on top of snake's tail.
 
 ### Maybe
 - [ ] Add start menu
