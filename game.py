@@ -18,6 +18,8 @@ class Game():
         self.food = Food(self.snake.body)
         self.font = pygame.font.SysFont('arial', 48, True, False)
 
+        self.t = True
+
     def run(self):
         while(True):
             self.events()
@@ -35,13 +37,17 @@ class Game():
                     pygame.quit()
                     sys.exit()
 
-                if event.key == pygame.K_RIGHT and self.snake.dir != [-1, 0]:
+                if event.key == pygame.K_RIGHT and self.snake.dir != [-1, 0] and self.t:
+                    self.t = False
                     self.snake.dir = [1, 0]
-                if event.key == pygame.K_LEFT and self.snake.dir != [1, 0]:
+                if event.key == pygame.K_LEFT and self.snake.dir != [1, 0] and self.t:
+                    self.t = False
                     self.snake.dir = [-1, 0]
-                if event.key == pygame.K_UP and self.snake.dir != [0, 1]:
+                if event.key == pygame.K_UP and self.snake.dir != [0, 1] and self.t:
+                    self.t = False
                     self.snake.dir = [0, -1]
-                if event.key == pygame.K_DOWN and self.snake.dir != [0, -1]:
+                if event.key == pygame.K_DOWN and self.snake.dir != [0, -1] and self.t:
+                    self.t = False
                     self.snake.dir = [0, 1]
 
     def update(self):
@@ -49,6 +55,8 @@ class Game():
         if self.snake.eatt:
             self.food = Food(self.snake.body)
             self.snake.eatt = 0
+
+        self.t = True
 
         self.clock.tick(10)
 
