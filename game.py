@@ -17,7 +17,6 @@ class Game():
         self.snake = Snake(2, 2)
         self.food = Food(self.snake.body)
         self.font = pygame.font.SysFont('arial', 48, True, False)
-
         self.t = True
 
     def run(self):
