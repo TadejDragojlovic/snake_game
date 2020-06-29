@@ -16,12 +16,7 @@ class Food():
         window.blit(self.food_body, self.pos)
 
     def set_pos(self, snake_body):
-        set = False
-        while not set:
-            pos = [random.randint(0, 19)*cell_size, random.randint(0,19)*cell_size]
-            for cell in snake_body:
-                if pos == cell:
-                    continue
-                else:
-                    set = True
+        pos = [12*cell_size, 10*cell_size]
+        while pos in snake_body:
+            pos = [random.randint(0, 19)*cell_size, random.randint(0, 19)*cell_size]
         return pos
